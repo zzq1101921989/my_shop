@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import InitRouter from "../router";
+import BottomTabBar from "./TabBar";
 import { useLocation } from "react-router-dom";
 
 export default function Frame () {
@@ -13,7 +14,7 @@ export default function Frame () {
     }
     return (
         <Fragment>
-            <div>这是导航</div>
+            <BottomTabBar />
             <InitRouter/>
         </Fragment>
     )
