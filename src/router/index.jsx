@@ -4,7 +4,7 @@ import router_list from "./router_list";
 
 export default function InitRouter () {
     return (
-        <Suspense fallback={<div>loading...</div>} >
+        <Suspense fallback={<div></div>} >
             <Switch>
                 {
                     router_list.map(item => {
