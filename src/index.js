@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 import FastClick from "fastclick";
+import "./config/rem";
 
 // 去除移动端 300ms点击延时
 if ('addEventListener' in document) {
