@@ -1,29 +1,28 @@
 import React, { useEffect } from "react";
-import Swiper, { Pagination, } from 'swiper';
+import Swiper  from 'swiper';
 
 import styl from "../home.module.scss";
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
 
 // 添加插件包
-Swiper.use([Pagination]);
 
 export default function Banner({ bannerData }) {
 
     useEffect(() => {
-        let mySwiper = new Swiper('.swiper-container', {
+        new Swiper('.swiper-container', {
+            autoplay: true,
             loop: true,
             slidesPerView : 1,
             observer: true,
             observeSlideChildren: true,
             pagination: {
                 el: '.swiper-pagination',
+                bulletActiveClass: styl['my-bullet-active'],
             },
         })
-        return () => {
-            mySwiper = null;
-        }
-    }, [bannerData])
+       
+    }, [])
 
     return (
         <div className="swiper-container" style={{width: "100%"}}>
