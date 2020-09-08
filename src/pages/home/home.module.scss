@@ -183,7 +183,6 @@
     margin-top: 0.625rem;
     padding: 1.25rem 0 0.9375rem 0;
     background: white; 
-    height: 100rem;
 }
 
 .flashTitleWrapper {
@@ -317,4 +316,181 @@
     top: 0;
     right: 0;
     width: 1.875rem;
+}
+
+// 猜你喜欢
+.yourLikeWrapper {
+    margin-top: 0.625rem;
+    padding-bottom: 3.5rem;
+}
+
+.yourLikeTitleWrapper {
+    position: relative;
+    padding: 0 0.625rem;
+    height: 2.1875rem;
+    text-align: center; }
+
+.middleLine {
+    padding-top: 1.09375rem;
+    border-bottom: solid 1px #D8D8D8;
+}
+
+.yourLikeTitle {
+    position: relative;
+    display: inline-block;
+    top: -1.09375rem;
+    padding: 0 1.25rem;
+    line-height: 2.1875rem;
+    font-size: 1rem;
+    background: #F5F5F5;
+}
+
+// =========================
+.noticeGreen, .noticeGray {
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.yourLikeItemWrapper {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    padding: 0.3125rem;
+    vertical-align: top;
+}
+
+.content {
+    background: #FFF;
+    border-radius: 0.3125rem;
+    overflow: hidden;
+}
+
+.youImageWrapper {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background: url("https://img.ddimg.mobi/assets/h5/product-img-load.png") no-repeat;
+    background-size: 100% 100%;
+    border-radius: 0.3125rem;
+}
+
+.imageWrapper > div:first-child {
+    padding: 0.625rem;
+}
+
+.yourImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.1875rem;
+}
+
+.yourInfoWrapper {
+    padding: 0 0.625rem 0.625rem 0.625rem;
+}
+
+.article {
+    height: 2.5rem;
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.nameText {
+    vertical-align: middle;
+}
+
+.tagsWrapper {
+    margin: 0.125rem 0;
+    height: 1.0625rem;
+    line-height: 0.8125rem;
+    overflow: hidden; }
+
+.tag + .tag {
+    margin-left: 0.3125rem;
+}
+
+@media screen and (min-width: 0px) and (max-width: 320px) {
+    .tag + .tag {
+        margin-left: 0.125rem;
+    }
+}
+
+.H1B9Rvu {
+    height: 1rem;
+}
+
+.yourPriceWrapper {
+    display: table;
+    height: 2.5rem;
+    width: 100%;
+}
+.yourPriceWrapper .youPriceInfo {
+    height: 2.5rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.yourPriceWrapper .youPriceInfo .pricePart {
+    height: 1.25rem;
+    position: relative;
+}
+
+.yourPriceWrapper .youPriceInfo .pricePart .price {
+    display: inline-block;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #FE6263;
+}
+
+.yourPriceWrapper .youPriceInfo .pricePart .originPrice {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 0.3125rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    text-decoration: line-through;
+    font-size: 0.6875rem;
+    color: #B2B2B2;
+    position: absolute;
+    top: 0.15625rem;
+}
+
+.yourPriceWrapper .yourIconCartWrapper {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.yourPriceWrapper .yourIconCartWrapper .youIconCart {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -0.9375rem;
+    display: block;
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+// 返回顶部
+.toTopIconWrapper {
+    position: fixed;
+    right: 0.625rem;
+    bottom: 4rem;
+    font-size: 0;
+}
+
+.toTopIcon {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
 }
