@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 import FastClick from "fastclick";
+import { Provider } from "react-redux";
+import store from "./store/index";
 import "./config/rem";
 
 // 去除移动端 300ms点击延时
@@ -14,9 +16,11 @@ if ('addEventListener' in document) {
 }
 
 ReactDOM.render(
-	<BrowserRouter>
-        <App />
-    </BrowserRouter>,
+	<Provider store={store} >
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>,
 	document.getElementById('root')
 );
 

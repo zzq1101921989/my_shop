@@ -8,37 +8,46 @@ import Nav from "./components/Nav";
 import FlashSale from "./components/FlashSale";
 import YourLike from "./components/YourLike";
 import Top from "./components/Top";
-import { useThrottle } from "../../utils";
+import { useScrollHandle, animate } from "../../utils";
+import withCancelComponent from "../../hoc/withCancelComponent";
 
-export default function Home () {
+function Home (props) {
+
+    let {cancel, cancelToken } = props;
 
     let [homeData, setData] = useState("");
 
     let [showTop, setShowTop] = useState(false);
 
-    // 节流
-    let scrollHandle = useThrottle(function () {
-        if ( window.scrollY > 300 ) {
-            setShowTop(true);
-        } else {
-            setShowTop(false);
-        }
-    }, 500);
+    let res = useScrollHandle();
 
     useEffect(() => {
         // 请求数据
-        async function HandlerData() {
-            let { data } = await getHomeData();
-            setData(data)
-        };
-        HandlerData();
-
-        window.addEventListener("scroll", scrollHandle , false);
-
-        return () => {
-            window.removeEventListener("scroll", scrollHandle);
+        try {
+            async function HandlerData() {
+                let res = await getHomeData(cancelToken);
+                if ( res ) setData(res.data)
+            };
+            HandlerData();
+        } catch (e) {
+            console.log(e);
         }
-    }, [])
+        return () => {
+            // 取消请求
+            cancel("取消请求");
+        }
+    }, []);
+
+    useEffect(() => {
+        /* 显示隐藏返回顶部组件 */
+        setShowTop(res);
+    }, [ res ]);
+
+    // 返回顶部按钮点击
+    function backButtonClick () {
+        let docB = document.documentElement || document.body;
+        animate(docB, {scrollTop: 0})
+    }
 
     return (
         homeData ? (
@@ -55,9 +64,11 @@ export default function Home () {
                 <YourLike articleData={homeData.data.list[4].product_list} />
                 {/* 返回顶部 */}
                 {
-                    showTop ? <Top /> : ''
+                    showTop ? <Top handler={backButtonClick} /> : ''
                 }
             </div>
         ) : <Loading />
     )
 }
+
+export default withCancelComponent(Home);

@@ -40,7 +40,7 @@ const router_list = [
         render (props) {
             return <Login {...props} />
         },
-        name: "个人中心"
+        name: "登录"
     },
 ];
 

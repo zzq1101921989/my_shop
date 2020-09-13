@@ -1,9 +1,12 @@
 import React from "react";
 import styl from "../home.module.scss";
 
-export default function Top() {
+export default function Top({handler}) {
     return (
-        <div className={styl.toTopIconWrapper}>
+        <div 
+            className={styl.toTopIconWrapper}
+            onClick={handler}
+        >
             <svg viewBox="0 0 88 88" className={styl.icon + " " + styl.toTopIcon}>
                 <g fill="none" fillRule="evenodd">
                     <circle cx="44" cy="44" r="43.5" stroke="#CCC" fill="#FFF"></circle>
