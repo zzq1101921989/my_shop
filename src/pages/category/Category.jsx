@@ -1,14 +1,20 @@
 import React, {Fragment, useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
+// 加载组件
 import Header from "./components/Header";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Loading";
 import Nav from "./components/Nav";
-import styles from "./category.module.scss";
-// import { getCategoryNavData, getCategoryContainerData } from "../../api/index";
 import ContextView from "./components/ContextView";
-import { loadCateGoryDataAction } from "../../store/action/cateGoryAction"
+// 请求分类数据接口
+import { loadCateGoryDataAction } from "../../store/action/cateGoryAction";
+// 样式
+import styles from "./category.module.scss";
+// 高阶组件
+import withCancelComponent from "../../hoc/withCancelComponent";
 
-export default function Category () {
+function Category (props) {
+
+    let { cancel, cancelToken } = props
 
     let dispatch = useDispatch();
 
@@ -26,28 +32,17 @@ export default function Category () {
     }
 
     useEffect(() => {
-
-        // async function getCategoryData () {
-        //     let leftRes = await getCategoryNavData();
-        //     let { contextData, preParams } = await getCategoryContainerData("lk001");
-        //     dispatch({
-        //         type: "LOADING_CATEGORY_DATA",
-        //         menuData: leftRes,
-        //         contextData,
-        //         preParams
-        //     })
-        // }
-
         if (!menuData.length && !contextData.length) {
-
-            // getCategoryData();
-
-            dispatch(loadCateGoryDataAction());
+            console.log(1111);
+            dispatch(loadCateGoryDataAction(cancelToken));
+        }
+        return () => {
+            cancel();
         }
     }, []);
 
     return (
-        menuData?.length || contextData?.length ?
+       ( menuData?.length || contextData?.length ) ?
         <Fragment>
             {/* 搜索头部 */}
             <Header/>
@@ -64,3 +59,5 @@ export default function Category () {
         </Fragment> : <Loading />
     )
 }
+
+export default withCancelComponent(Category);

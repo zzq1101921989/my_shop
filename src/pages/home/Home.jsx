@@ -1,40 +1,46 @@
 import React, { useEffect, useState } from "react";
-import styl from "./home.module.scss";
-import { getHomeData } from "../../api/index"
+import { useSelector, useDispatch } from "react-redux";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Loading";
 import Nav from "./components/Nav";
 import FlashSale from "./components/FlashSale";
 import YourLike from "./components/YourLike";
 import Top from "./components/Top";
+import { initHomeData } from "../../store/action/homeAction";
 import { useScrollHandle, animate } from "../../utils";
 import withCancelComponent from "../../hoc/withCancelComponent";
+import styles from "./home.module.scss";
 
-function Home (props) {
 
-    let {cancel, cancelToken } = props;
+function Home ({cancel, cancelToken }) {
 
-    let [homeData, setData] = useState("");
+    const dispatch = useDispatch();
+
+    let homeData = useSelector(state => state.homeReducer);
 
     let [showTop, setShowTop] = useState(false);
 
     let res = useScrollHandle();
 
     useEffect(() => {
-        // 请求数据
-        try {
-            async function HandlerData() {
-                let res = await getHomeData(cancelToken);
-                if ( res ) setData(res.data)
-            };
-            HandlerData();
-        } catch (e) {
-            console.log(e);
+
+        let docB = document.documentElement || document.body;
+
+        if (homeData.loading) {
+            // 请求数据
+            dispatch(initHomeData(cancelToken));
         }
+        // 还原滚动位置
+        if (window.sessionStorage.getItem('scrollY')) {
+            docB.scrollTo(0, window.sessionStorage.getItem('scrollY'));
+        }
+        
         return () => {
             // 取消请求
             cancel("取消请求");
+            // 组件卸载记录滚动位置
+            window.sessionStorage.setItem('scrollY', docB.scrollTop)
         }
     }, []);
 
@@ -50,8 +56,8 @@ function Home (props) {
     }
 
     return (
-        homeData ? (
-            <div className={styl.home}>
+        !homeData.loading ? (
+            <div className={styles.home}>
                 {/* 首页头部 */}
                 <Header />
                 {/* 首页轮播 */}

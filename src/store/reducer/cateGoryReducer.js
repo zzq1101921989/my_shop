@@ -1,6 +1,5 @@
 import { LOADING_CATEGORY_DATA, ADD__CATEGORY_DATA } from "../types/cateGoryType"
 
-
 let initData = {
     menuData: [],
     contextData: []

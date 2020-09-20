@@ -68,7 +68,6 @@ export function useScrollHandle () {
     return res;
 }
 
-
 /*
 * 获取样式兼容
 */
@@ -85,7 +84,6 @@ function getStyle(element, attr) {
     }
     return value;
 }
-
 
 /**
  * 运动效果

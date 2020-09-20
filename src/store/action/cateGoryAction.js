@@ -1,19 +1,21 @@
 import { getCategoryNavData, getCategoryContainerData } from "../../api/index";
 import { LOADING_CATEGORY_DATA } from "../types/cateGoryType"
 
-export const loadCateGoryDataAction = () => {
+export const loadCateGoryDataAction = (cancelToken) => {
 
     return async (dispatch, getState) => {
 
-        let leftRes = await getCategoryNavData();
+        let navRes = await getCategoryNavData(cancelToken);
 
-        let { contextData, preParams } = await getCategoryContainerData("lk001");
+        let contextRes = await getCategoryContainerData("lk001", cancelToken);
 
-        dispatch({
-            type: LOADING_CATEGORY_DATA,
-            menuData: leftRes,
-            contextData,
-            preParams
-        })
+        if (navRes && contextRes) {
+            dispatch({
+                type: LOADING_CATEGORY_DATA,
+                menuData: navRes,
+                contextData: contextRes.contextData,
+                preParams: contextRes.preParams
+            })
+        }
     }
 }

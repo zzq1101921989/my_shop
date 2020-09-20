@@ -13,12 +13,14 @@ export async function getHomeData (cancelToken) {
 }
 
 // 请求分类侧边栏数据
-export async function getCategoryNavData() {
+export async function getCategoryNavData(cancelToken) {
 
     try {
-        
-        let res = await http.get('/homeApi/categories');
-        
+
+        let res = await http.get('/homeApi/categories', {
+            cancelToken,
+        });
+
         return res.data.data;
 
     } catch (e) {
@@ -29,10 +31,12 @@ export async function getCategoryNavData() {
 }
 
 // 请求分类主体数据
-export async function getCategoryContainerData(preParams) {
+export async function getCategoryContainerData(preParams, cancelToken) {
     
     try {
-        let res = await http.get('/homeApi/categoriesdetail/' + preParams);
+        let res = await http.get('/homeApi/categoriesdetail/' + preParams, {
+            cancelToken,
+        });
         
         return {
             contextData: res.data.data,
