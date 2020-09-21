@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
+import { Modal } from "antd-mobile";
 import { useDispatch } from "react-redux";
 import { 
     addGoodsToCart, 
@@ -17,10 +18,31 @@ export default function CartItem({ styles, cartDate }) {
 
     // 设置当前商品的购买数量
     function setUpGoodsNumberHandler (type) {
+
         if (type === "add") {
+
             dispatch(setUpGoodsNumber(cartDate.id, ++cartDate.num));
+
         } else if (type === "minus") {
-            dispatch(setUpGoodsNumber(cartDate.id, --cartDate.num));
+
+            if (cartDate.num === 1) {
+
+                Modal.alert('温馨提示', '确定删除该商品?', [
+                    {
+                        text: '取消',
+                        onPress: () => {
+                        }
+                    },
+                    {
+                        text: '确定',
+                        onPress: () => {
+                            dispatch(setUpGoodsNumber(cartDate.id, --cartDate.num));
+                        }
+                    },
+                ])
+            } else {
+                dispatch(setUpGoodsNumber(cartDate.id, --cartDate.num));
+            }
         }
     }
 

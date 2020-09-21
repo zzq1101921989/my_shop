@@ -12,7 +12,6 @@ export default function Header({styles, dispatch, clearCart}) {
                         {
                             text: '取消',
                             onPress: () => {
-                                console.log("111")
                             }
                         },
                         {

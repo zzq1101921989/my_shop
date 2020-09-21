@@ -33,7 +33,6 @@ function Category (props) {
 
     useEffect(() => {
         if (!menuData.length && !contextData.length) {
-            console.log(1111);
             dispatch(loadCateGoryDataAction(cancelToken));
         }
         return () => {

@@ -30,6 +30,7 @@ function Home ({cancel, cancelToken }) {
         if (homeData.loading) {
             // 请求数据
             dispatch(initHomeData(cancelToken));
+            window.sessionStorage.removeItem('scrollY');
         }
         // 还原滚动位置
         if (window.sessionStorage.getItem('scrollY')) {

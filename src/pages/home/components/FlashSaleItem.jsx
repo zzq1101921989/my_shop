@@ -3,7 +3,7 @@ import styl from "../home.module.scss";
 
 export default function FlashSaleItem (props) {
 
-    let { small_image, spec, product_name, origin_price, price } = props;
+    let {id, small_image, spec, product_name, origin_price, price, addGoodsToCart } = props;
 
     return (
         <div className={styl.bottomWrapper}>
@@ -20,7 +20,12 @@ export default function FlashSaleItem (props) {
                     <div className={styl.originPrice}>￥{origin_price}</div>
                     <div className={styl.priceWrapper}>
                         <div className={styl.price}>￥<span className="f28">{price}</span></div>
-                        <div className={styl.iconCartWrapper}>
+                        <div 
+                            className={styl.iconCartWrapper}
+                            onClick={() => {
+                                addGoodsToCart(props);
+                            }}
+                        >
                             <svg viewBox="0 0 52 52" className="icon icon-60">
                                 <defs>
                                     <radialGradient cx="27.0288363%" cy="10.3693483%" fx="27.0288363%" fy="10.3693483%" r="93.8427229%" id="radialGradient-1"><stop stopColor="#4ECA75" offset="0%"></stop><stop stopColor="#39B460" offset="100%"></stop></radialGradient>
