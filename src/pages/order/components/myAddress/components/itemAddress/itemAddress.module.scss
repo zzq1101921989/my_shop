@@ -1,0 +1,24 @@
+.addressItem{
+    display: flex;
+    padding: 1rem 0.7rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    .addLeft{
+        display: flex;
+        padding: 0 0.5rem;
+        align-items: center;
+        justify-content: space-between;
+        .text{
+            margin-left: 1rem;
+            span{
+                font-size: 1rem;
+            }
+            p{
+                margin-top: 0.4rem;
+                font-size: 0.7rem;
+                color: #999;
+            }
+        }
+    }
+}

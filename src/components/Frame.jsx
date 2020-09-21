@@ -24,7 +24,7 @@ export default function Frame () {
         })
     }, [])
 
-    if ( pathname === "/login" ) {
+    if ( pathname === "/login" || pathname === "/order" || pathname === "/order/myAddress" ) {
         return (
             <InitRouter/>
         )

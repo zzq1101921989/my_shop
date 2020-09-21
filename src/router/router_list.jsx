@@ -1,9 +1,10 @@
 import React, { lazy } from "react";
-const Home = lazy( () => import("../pages/home/Home") )
-const Cart = lazy( () => import("../pages/cart/Cart") )
-const Category = lazy( () => import("../pages/category/Category") )
-const Person = lazy( () => import("../pages/person/Person") )
-const Login = lazy( () => import("../pages/login/Login") )
+const Home = lazy( () => import("../pages/home/Home") );
+const Cart = lazy( () => import("../pages/cart/Cart") );
+const Category = lazy( () => import("../pages/category/Category") );
+const Person = lazy( () => import("../pages/person/Person") );
+const Login = lazy( () => import("../pages/login/Login") );
+const Order = lazy( () => import("../pages/order/Order") );
 
 const router_list = [
     {
@@ -41,7 +42,14 @@ const router_list = [
             return <Login {...props} />
         },
         name: "登录"
-    },
+    },{
+        path: "/order",
+        exact: false,
+        render (props) {
+            return <Order {...props} />
+        },
+        name: "订单"
+    }
 ];
 
 export default router_list;

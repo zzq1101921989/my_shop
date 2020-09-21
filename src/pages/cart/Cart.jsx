@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import styles from "./cart.module.scss";
 
-export default function Cart() {
+export default function Cart({history}) {
 
     const dispatch = useDispatch();
 
@@ -64,6 +64,7 @@ export default function Cart() {
                     selectAllGoods={selectAllGoods}
                     currentGoodsLength={currentGoods.length}
                     addMoney={addMoney}
+                    history={history}
                 />
             </div>
         </div>

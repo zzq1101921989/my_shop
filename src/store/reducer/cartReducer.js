@@ -26,7 +26,7 @@ export default function cartReducer (state = initCartData, action) {
                     small_image: action.goods.small_image,
                     spec: action.goods.spec,
                     num: 1,
-                    select: false
+                    select: true
                 }
             }
             return {...state};

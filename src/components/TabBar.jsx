@@ -50,8 +50,6 @@ export default function BottomTabBar() {
         return total + Number(cartData[currentValue].num);
     }, 0)
 
-    console.log(cartNumber);
-
     const selectHandle = useCallback( (targetPathArr, pathname) => {
         let res = targetPathArr.find( item => {
                     return item === pathname
