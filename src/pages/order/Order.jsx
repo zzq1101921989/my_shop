@@ -6,7 +6,7 @@ import MyAddress from "../order/components/myAddress/MyAddress";
 import styles from "./order.module.scss";
 
 function Order(props) {
-
+    // getFieldProps函数返回一个包含 value、ref、onChange的对象
     const { history, form: {getFieldProps} } = props;
 
     let [date, setDate] = useState(null);
