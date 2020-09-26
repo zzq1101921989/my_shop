@@ -24,7 +24,9 @@ export default function MyAddress({ history, location }) {
     let [currentAddress, setAddress] = useState(1);
 
     function setCurrentAddressHandler (id) {
-        setAddress(id)
+        if (id !== currentAddress) {
+            setAddress(id)
+        }
     }
 
     return (

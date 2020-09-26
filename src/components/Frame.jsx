@@ -7,7 +7,8 @@ import { Toast } from "antd-mobile";
 import { addGoodsToCart } from "../store/action/cartAction";
 import { useDispatch } from "react-redux";
 
-
+// 不需要展示底部导航的黑名单
+const blackList = ['/login', '/order', '/order/myAddress' ]
 
 export default function Frame () {
 
@@ -22,9 +23,9 @@ export default function Frame () {
             dispatch(addGoodsToCart(data));
             Toast.info("添加购物车成功", 1)
         })
-    }, [])
+    }, []);
 
-    if ( pathname === "/login" || pathname === "/order" || pathname === "/order/myAddress" ) {
+    if ( blackList.includes(pathname) ) {
         return (
             <InitRouter/>
         )

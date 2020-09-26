@@ -29,7 +29,7 @@ const router_list = [
         },
         name: "购物车"
     },{
-        path: "/my",
+        path: "/person",
         exact: true,
         render (props) {
             return <Person {...props} />
